@@ -1,0 +1,497 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "insulin wiserer",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "choCoverageCalcIntent",
+          "slots": [
+            {
+              "name": "choRatio",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "cho",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "i am eating {cho} grams",
+            "one insulin unit can dispose {choRatio} grams carbohydrate ",
+            "one unit of insulin can dispose {choRatio} grams carbohydrate",
+            "One insulin unit can dispose {choRatio} grams of my carbohydrate",
+            "I think I am going to eat {cho} grams",
+            "I think i am about to eat {cho} grams",
+            "I am about to eat {cho} grams carbohydrate",
+            "i think my ratio is {choRatio}",
+            "My ratio is {choRatio}",
+            "The ratio is {choRatio}",
+            "I am going to eat {cho} grams",
+            "My meal contains {cho} grams "
+          ]
+        },
+        {
+          "name": "corrDoseCalcIntent",
+          "slots": [
+            {
+              "name": "corrFactor",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "actualVal",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "targetVal",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "i think my correction factor is {corrFactor}",
+            "my factor is {corrFactor}",
+            "the factor is {corrFactor}",
+            "I am having {actualVal} ",
+            "I want it to be {targetVal}",
+            "My target value is {targetVal}",
+            "The actual value is {actualVal}",
+            "My correction factor is {corrFactor}",
+            "I wish to maintain my blood sugar at {targetVal}",
+            "My actual blood sugar value is {actualVal}"
+          ]
+        },
+        {
+          "name": "eatChoIntent",
+          "slots": [
+            {
+              "name": "eatCho",
+              "type": "yesNoType"
+            }
+          ],
+          "samples": [
+            "{eatCho} i am not",
+            "{eatCho} i am",
+            "{eatCho}  "
+          ]
+        },
+        {
+          "name": "corrFactorCaptureIntent",
+          "slots": [
+            {
+              "name": "corrFactorCapture",
+              "type": "yesNoType"
+            }
+          ],
+          "samples": [
+            "{corrFactorCapture} i am not sure",
+            "{corrFactorCapture} i haven\u0027t asked my doctor yet",
+            "{corrFactorCapture} i don\u0027t know it",
+            "{corrFactorCapture} i don\u0027t",
+            "{corrFactorCapture} i know the factor ",
+            "{corrFactorCapture} i do ",
+            "{corrFactorCapture} the doctor told me "
+          ]
+        },
+        {
+          "name": "choRatioCaptureIntent",
+          "slots": [
+            {
+              "name": "choRatioCapture",
+              "type": "yesNoType"
+            }
+          ],
+          "samples": [
+            "{choRatioCapture} i don\u0027t think so ",
+            "{choRatioCapture} he has",
+            "{choRatioCapture} she has",
+            "{choRatioCapture} she hasn\u0027t ",
+            "{choRatioCapture} he hasn\u0027t",
+            "{choRatioCapture} he didn\u0027t",
+            "{choRatioCapture} she didn\u0027t",
+            "{choRatioCapture} i haven\u0027t asked yet",
+            "{choRatioCapture} she did",
+            "{choRatioCapture} the doctor did",
+            "{choRatioCapture} i know the ratio",
+            "{choRatioCapture} he did"
+          ]
+        },
+        {
+          "name": "choCoverageMealIntent",
+          "slots": [
+            {
+              "name": "meal",
+              "type": "mealType"
+            },
+            {
+              "name": "choMeal",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "I am having {choMeal} grams",
+            "I think i am about to have {choMeal} grams",
+            "I am having {meal}",
+            "I am going to have {choMeal} grams",
+            "{meal}",
+            "i am about to have {choMeal} grams",
+            "I am about to have {choMeal} grams of carbohydrate",
+            "I am eating {meal}",
+            "I am about to eat {meal}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "no",
+                "synonyms": [
+                  "nope, no thank you"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "yes ",
+                "synonyms": [
+                  "yep, yeah, I do, yes please"
+                ]
+              }
+            }
+          ],
+          "name": "yesNoType"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "dinner"
+              }
+            },
+            {
+              "name": {
+                "value": "breakfast"
+              }
+            },
+            {
+              "name": {
+                "value": "lunch"
+              }
+            }
+          ],
+          "name": "mealType"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "choCoverageCalcIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "choRatio",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1368759780911.437300652828"
+              }
+            },
+            {
+              "name": "cho",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1368759780911.597230690525"
+              }
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        },
+        {
+          "name": "corrDoseCalcIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "corrFactor",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.465297143619.314553880028"
+              }
+            },
+            {
+              "name": "actualVal",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.465297143619.531018165343"
+              }
+            },
+            {
+              "name": "targetVal",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.465297143619.1146266508189"
+              }
+            }
+          ]
+        },
+        {
+          "name": "eatChoIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "eatCho",
+              "type": "yesNoType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1574934111346.433582911309"
+              }
+            }
+          ]
+        },
+        {
+          "name": "corrFactorCaptureIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "corrFactorCapture",
+              "type": "yesNoType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1059422630423.1535018299655"
+              }
+            }
+          ]
+        },
+        {
+          "name": "choRatioCaptureIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "choRatioCapture",
+              "type": "yesNoType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.438964202118.984641153074"
+              }
+            }
+          ]
+        },
+        {
+          "name": "choCoverageMealIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "meal",
+              "type": "mealType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.650436296042.354171181871"
+              }
+            },
+            {
+              "name": "choMeal",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.650436296042.306658065878"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.580691700169.1573775266701",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your target blood sugar level?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.580691700169.796715329974",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your actual blood sugar?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.580691700169.1219581707344",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much carbohydrate are you going to eat?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.802895793227.1315562924835",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "At which level do you wish to maintain your blood sugar?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.713039010146.1325328027971",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "I need to know how much carbohydrate you are about to eat to calculate the insulin dosis"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1368759780911.597230690525",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many grams carbohydrate are you about to eat?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1368759780911.437300652828",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many grams of your carbohydrate intake can be disposed by one unit of insulin then?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.465297143619.531018165343",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "And what is your actual blood sugar level?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.465297143619.1146266508189",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much do you wish your blood sugar to be?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.465297143619.314553880028",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your prescribed blood sugar correction factor then?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1574934111346.433582911309",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you also going to eat carbohydrate?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.577317617459.880510449076",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "I also need to know how many units insulin you need per one gram carbohydrate. Has your doctor prescribed this ratio yet?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.228468049830.524968523454",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "The insulin correction factor tells you how much one insulin unit will drop your blood sugar. Has your doctore prescribed this yet?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1059422630423.1535018299655",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "To calculate the high blood sugar correction dose, I need your correction factor. This tells by how many points one insulin unit will drop your blood sugar. Do you know this value?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.438964202118.984641153074",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "To calculate the carbohydrate coverage dose, I need to know your carbohydrate insulin ratio. This tells how many grams of your carbohydrate intake can be disposed by one unit of insulin. Has your doctor prescribed this yet?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.650436296042.354171181871",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you about to have breakfast, dinner or lunch?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.650436296042.306658065878",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many grams carbohydrate are you about to have?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "58"
+}
